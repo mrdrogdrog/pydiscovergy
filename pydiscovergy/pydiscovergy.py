@@ -192,3 +192,15 @@ class PyDiscovergy:
         except Exception as exception_instance:
             _LOGGER.error("Exception: " + str(exception_instance))
             return False
+    def get_readings(self, meter_id, fields, from, to, resolution, disaggregation):
+        """Get readings for meter"""
+
+        try:
+            response = self._discovergy_oauth.get(self._base_url + "/readings?meterId=" + str(meter_id) + "&from=" + int(from))
+            if response:
+                return json.loads(response.content.decode("utf-8"))
+            else:
+                return False
+        except Exception as exception_instance:
+            _LOGGER.error("Exception: " + str(exception_instance))
+            return False
