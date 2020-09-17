@@ -3,7 +3,7 @@ from requests_oauthlib import OAuth1Session
 import requests
 import json
 import sys
-from . import Meter
+from .models import Meter
 
 TIMEOUT = 10
 _LOGGER = logging.getLogger(__name__)
