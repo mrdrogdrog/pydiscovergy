@@ -198,7 +198,7 @@ class PyDiscovergy:
         """Get readings for meter"""
 
         try:
-            response = self._discovergy_oauth.get(self._base_url + "/readings?meterId=" + str(meter_id) + "&from=" + int(from_timestamp))
+            response = self._discovergy_oauth.get(self._base_url + "/readings?meterId=" + str(meter_id) + "&from=" + str(from_timestamp))
             if response:
                 return json.loads(response.content.decode("utf-8"))
             else:
