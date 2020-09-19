@@ -194,11 +194,11 @@ class PyDiscovergy:
             return False
 
 #    def get_readings(self, meter_id, fields, from_timestamp, to_timestamp, resolution, disaggregation):
-    def get_readings(self, meter_id, from_timestamp):
+    def get_readings(self, meter_id, from_timestamp, resolution='raw'):
         """Get readings for meter"""
 
         try:
-            response = self._discovergy_oauth.get(self._base_url + "/readings?meterId=" + str(meter_id) + "&from=" + str(from_timestamp))
+            response = self._discovergy_oauth.get(self._base_url + "/readings?meterId=" + str(meter_id) + "&resolution=" + str(resolution) + "&from=" + str(from_timestamp))
             if response:
                 return json.loads(response.content.decode("utf-8"))
             else:
